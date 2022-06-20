@@ -9,5 +9,6 @@ app.use(express.json([]));
 app.post("/login", UserController.login);
 app.post("/signup", UserController.signup);
 app.post("/verifyToken", UserController.verifyTokenFn);
+app.post("/getUserById/:id", UserController.getUserById);
 
 module.exports = app;

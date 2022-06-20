@@ -50,3 +50,17 @@ exports.verifyTokenFn = (req, res, next) => {
     res.json({ error: error, message: "Invalid Token", status: false });
   }
 };
+
+exports.getUserById = async (req, res, next) => {
+  try {
+    let id = req.params;
+    let response = await userModel.find({ _id: id });
+    if (!response) {
+      res.json({ status: false, message: "User not found!" });
+      return;
+    }
+    res.json({ status: true, data: response });
+  } catch (error) {
+    res.json({ error: error, message: "something went wrong", status: false });
+  }
+};
