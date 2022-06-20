@@ -53,7 +53,8 @@ exports.verifyTokenFn = (req, res, next) => {
 
 exports.getUserById = async (req, res, next) => {
   try {
-    let id = req.params;
+    let { id } = req.params;
+
     let response = await userModel.find({ _id: id });
     if (!response) {
       res.json({ status: false, message: "User not found!" });
