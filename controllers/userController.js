@@ -17,7 +17,12 @@ exports.login = async (req, res, next) => {
 
     let token = generateToken({ ...response[0] });
 
-    res.json({ status: true, message: "Login Success", token });
+    res.json({
+      status: true,
+      message: "Login Success",
+      token,
+      id: response[0]._id,
+    });
   } catch (error) {
     res.status(400).json({ error: error, status: false, token: false });
   }
